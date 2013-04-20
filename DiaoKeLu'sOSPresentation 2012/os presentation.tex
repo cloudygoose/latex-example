@@ -1,0 +1,238 @@
+\documentclass[utf8]{beamer}
+\usepackage{verbatim}
+\usepackage{amsmath}
+\usepackage{wrapfig}
+\usepackage{graphicx}
+\usepackage{multirow}
+\usepackage{tabularx}
+\usepackage{color}
+%\usepackage{indentfirst}
+%\usepackage{ctex}
+\usetheme{Berkeley}
+\usecolortheme{orchid}
+\setbeamercovered{transparent}
+
+\newtheorem{model}{Model}
+\newtheorem{case}{Actual case}
+\newtheorem{benefits}{Benefits}
+\newtheorem{drawbacks}{Drawbacks}
+
+\title{Cells: A new virtual machine architecture for mobile phones}
+\author{ACM 10 \quad Diao Kelu}
+%\date{}
+
+\begin{document}
+\begin{frame}
+\titlepage
+\end{frame}
+
+\section{Introduction}
+\begin{frame}
+\frametitle{Why we need Cells}
+\begin{enumerate}
+\item<+-> Why we need virtualization
+\item<+-> Limits in mobile devices
+\begin{itemize}
+\item<+-> resource
+\item<+-> users' tolerance
+\end{itemize}
+\item<+-> Cells is a lightweight virtualization architecture
+\end{enumerate}
+\end{frame}
+
+\begin{frame}
+\frametitle{What does Cells do}
+\begin{enumerate}
+\item<+-> Lightweight OS virtualization.
+    \begin{itemize}
+    \item<+-> only one OS
+    \item<+-> isolation
+    \item<+-> yet, with combining filesystem
+    \end{itemize}
+\item<+-> Foreground-background-model: take full advantage of the small display of smartphone
+\item<+-> Provide independent phone numbers for each virtual phone(VP) without using multiple SIM cards
+\item<+-> Fully support present hardware devices with nearly no overheads
+\end{enumerate}
+\end{frame}
+
+\section{Design \& Implement}
+\subsection{Usage model}
+\begin{frame}
+\frametitle{Key words}
+The key words are:
+\begin{enumerate}
+\item[-] switch
+\item[-] security
+\item[-] authority
+\end{enumerate}
+\end{frame}
+
+\subsubsection{Switch}
+\begin{frame}
+\frametitle{Foreground-background-model}
+%\begin{enumerate}
+%\item<+> one in foreground and several in background
+%\item<+> Auto-switch
+%\end{enumerate}
+\begin{figure}
+\begin{center}
+\includegraphics[height = 2in]{foreground_background_model1.jpg}
+\end{center}
+\caption{foreground-background-model}
+\end{figure}
+\end{frame}
+
+\begin{frame}
+\frametitle{Foreground-background-model}
+\begin{figure}
+\begin{center}
+\includegraphics[height = 2in]{foreground_background_model2.jpg}
+\end{center}
+\caption{malicious application}
+\end{figure}
+\end{frame}
+
+\begin{frame}
+\frametitle{Foreground-background-model}
+\begin{figure}
+\begin{center}
+\includegraphics[height = 2in]{foreground_background_model3.jpg}
+\end{center}
+\caption{forbid auto-switching}
+\end{figure}
+\end{frame}
+
+\subsubsection{Authority}
+\begin{frame}
+\frametitle{Authority}
+\begin{figure}
+\begin{center}
+\includegraphics[height = 2in]{foreground_background_model4.jpg}
+\end{center}
+\caption{user tends to modify the application}
+\end{figure}
+\end{frame}
+
+\begin{frame}
+\frametitle{Authority}
+\begin{figure}
+\begin{center}
+\includegraphics[height = 2in]{foreground_background_model5.jpg}
+\end{center}
+\caption{user tends to modify the application}
+\end{figure}
+\end{frame}
+
+\begin{frame}
+\frametitle{Authority}
+\begin{figure}
+\begin{center}
+\includegraphics[height = 2in]{foreground_background_model6.jpg}
+\end{center}
+\caption{set the authority}
+\end{figure}
+\end{frame}
+
+\begin{frame}
+\frametitle{Three access rights}
+\begin{enumerate}
+\item<+-> no access
+    \begin{itemize}
+    \item<+> This VP have no access to a certain device(IT admin's VP)
+    \end{itemize}
+\item<+-> shared access
+    \begin{itemize}
+    \item<+> Some device(e.g. frame buffer) can not be set to shared access
+    \end{itemize}
+\item<+-> exclusive access
+    \begin{itemize}
+    \item<+-> It's necessary for mobile security(e.g. microphone)
+    \item<+> It's used to implement part of the isolation
+    \end{itemize}
+\end{enumerate}
+\end{frame}
+
+\subsection{Architecture \& functionalities}
+\begin{frame}
+\frametitle{Architecture}
+\begin{figure}
+\begin{center}
+\includegraphics[height = 2in]{cells.jpg}
+\end{center}
+\caption{Overview of Cells architecture}
+\end{figure}
+\end{frame}
+
+\subsubsection{Scalability and Security}
+\begin{frame}
+\frametitle{Three ways for scalability}
+\begin{enumerate}
+\item<+-> the same base file system is shared read-only among VPs.
+\item<+-> when a new VP is started, Cells enables Linux Kernel Samepage Merging (KSM) for a short time
+\item<+-> Cells leverages the Android low memory killer to increase the total number of VPs, making it possible to run on a device without sacrificing functionality.
+\end{enumerate}
+\end{frame}
+
+\begin{frame}
+\frametitle{Four techs for security(isolation)}
+\begin{enumerate}
+\item<+-> user credentials
+\item<+-> kernel-level device namespaces
+\item<+-> mount namespaces
+\item<+-> CellD(create device nodes)
+\end{enumerate}
+\end{frame}
+
+\subsection{multi mobile phone numbers}
+\begin{frame}
+\frametitle{Multi mobile phone numbers}
+\begin{figure}
+\begin{center}
+\includegraphics[height = 2in]{multinumber.jpg}
+\end{center}
+\caption{multi phone number mechanism}
+\end{figure}
+\end{frame}
+
+\section{Test result}
+\begin{frame}
+\frametitle{Experimental results}
+\begin{figure}
+\begin{center}
+\includegraphics[height = 2in]{experimentalResults.jpg}
+\end{center}
+\end{figure}
+\end{frame}
+
+\section{Conclusion}
+\begin{frame}
+\frametitle{Conclusion}
+This Cells thing sucks!
+\begin{enumerate}
+\item<+-> All the security it can provide can be provided by normal mobile phones
+    \begin{itemize}
+    \item<+-> from applications
+    \item<+-> from other users
+    \end{itemize}
+\item<+-> The only highlights of this Cells architecture is the multi phone number support
+\item<+-> Unfortunately, We have Phelps copycat mobile and iphone: double card double standby
+\item<+-> And the experimental results
+\end{enumerate}
+\end{frame}
+
+\begin{frame}
+\frametitle{Cells sucks}
+\begin{center}
+Sorry for wasting your time
+\end{center}
+\end{frame}
+
+\section{Q \& A}
+\begin{frame}
+\frametitle{Q \& A}
+\begin{center}
+Is there really a Q \& A section?
+\end{center}
+\end{frame}
+
+\end{document} 

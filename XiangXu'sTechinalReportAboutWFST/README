@@ -1,0 +1,12 @@
+How to compile under Unix-like platforms:
+
+pdflatex tech && bibtex tech && pdflatex tech && pdflatex tech
+
+Under Windows platform, in commmand prompt(cmd):
+
+pdflatex tech
+bibtex tech
+pdflatex tech
+pdflatex tech
+
+

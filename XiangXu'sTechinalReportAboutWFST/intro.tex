@@ -1,0 +1,12 @@
+\section{Introduction}
+\label{sec:intro}
+
+WFST~\cite{mohri2008speech, mohri2009weighted} has been widely used in the area of automatic speech recognition (ASR). In ASR system designs, WFST is used to represent models at different stages such as acoustic model (denoted by H), context-dependency model (denoted by C), pronunciation model (denoted by L), statistical language model (denoted by G), etc. There are several rules and conventions to construct WFST from these models, however, it is sometimes tricky to tune the construction progress to make the resulting WFST more efficient and robust.
+
+This technical report examines both Juicer and Transducersaurus, and compares their WFST construction approaches.
+
+This technical report is arranged as follows. 
+Section~\ref{sec:grmmod} describes the statistical language model to WFST construction and discusses about normalisation and auxiliary symbols.
+Section~\ref{sec:lexmod} describes the pronunciation model to WFST construction and covers the topic of optimization.
+Section~\ref{sec:cdmod} illustrates a simple example of context-dependency model to WFST construction.
+Conclusions are drawn in section~\ref{sec:conclusion}.

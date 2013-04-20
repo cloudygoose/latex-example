@@ -1,0 +1,17 @@
+\BOOKMARK [1][-]{section.1}{Introduction}{}% 1
+\BOOKMARK [1][-]{section.2}{Statistical language model to WFST}{}% 2
+\BOOKMARK [2][-]{subsection.2.1}{n-gram Language Model Format}{section.2}% 3
+\BOOKMARK [2][-]{subsection.2.2}{Auxiliary Labels on Backoff -Transitions}{section.2}% 4
+\BOOKMARK [2][-]{subsection.2.3}{n-gram Language Model Normalisation}{section.2}% 5
+\BOOKMARK [1][-]{section.3}{Pronunciation model to WFST}{}% 6
+\BOOKMARK [2][-]{subsection.3.1}{Basic Representation}{section.3}% 7
+\BOOKMARK [2][-]{subsection.3.2}{Auxiliary Labels}{section.3}% 8
+\BOOKMARK [2][-]{subsection.3.3}{Optimization Issues}{section.3}% 9
+\BOOKMARK [1][-]{section.4}{Context-dependency model to WFST}{}% 10
+\BOOKMARK [2][-]{subsection.4.1}{Sub-word Units}{section.4}% 11
+\BOOKMARK [2][-]{subsection.4.2}{Basic Representation}{section.4}% 12
+\BOOKMARK [2][-]{subsection.4.3}{Silence Modeling}{section.4}% 13
+\BOOKMARK [3][-]{subsubsection.4.3.1}{Silence Modeling in Juicer}{subsection.4.3}% 14
+\BOOKMARK [3][-]{subsubsection.4.3.2}{Silence Modeling in Transducersaurus}{subsection.4.3}% 15
+\BOOKMARK [2][-]{subsection.4.4}{Auxiliary Symbols}{section.4}% 16
+\BOOKMARK [1][-]{section.5}{Conclusion}{}% 17

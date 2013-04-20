@@ -1,0 +1,75 @@
+\documentclass{article}
+\usepackage{a4wide}
+\usepackage{float}
+\usepackage{graphicx, latexsym, longtable}
+\usepackage{epsfig, color, psfrag}
+\usepackage{amsmath, amsfonts, amssymb}
+\usepackage{multirow}
+\usepackage{fancyvrb}
+\usepackage{subfig}
+\captionsetup[subfigure]{labelformat=empty}
+\usepackage[ 
+pdfauthor={Xu Xiang},
+pdftitle={Weighted Finite State Transducer Components Construction},
+pagebackref=false,
+colorlinks=false,
+linkcolor=red,
+]{hyperref}
+
+\begin{document}
+\bibliographystyle{plain}
+
+\begin{titlepage}
+\hrule
+
+\vspace{0.2in}
+\begin{center}
+{\bf Weighted Finite State Transducer Components Construction\\}
+\bigskip
+Xu Xiang\\
+\smallskip
+\date
+\bigskip
+
+E-mail: {\tt chinoiserie811@gmail.com}\\
+
+\bigskip
+
+\bigskip
+
+\end{center}
+
+\vspace{2cm}
+
+\hrule
+
+\bigskip
+
+\abstract 
+The weighted finite state transducer (WFST) framework provides a general representation for components of speech recognition systems, including acoustic model, context-dependency model, pronounciation model and statistical language model. We investigate several approaches and schemes of constructing WFST components used in IDIAP's Juicer WFST decoder and Josef Novak's Transducersaurus WFST tool sets. We illustrate the model to WFST construction progress to address some more general problems, and attempt to achieve some reasonable results.
+\endabstract
+\bigskip
+\hrule
+
+\end{titlepage}
+
+\tableofcontents \listoffigures \listoftables
+
+\newpage
+\setcounter{page}{1}
+\input{intro}
+
+\input{grmmod}
+
+\input{lexmod}
+
+\input{cdmod}
+
+\input{conclusion}
+
+\bibliography{ref}
+
+\newpage
+
+\end{document}
+

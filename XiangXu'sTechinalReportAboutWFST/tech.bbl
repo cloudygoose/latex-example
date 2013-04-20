@@ -1,0 +1,51 @@
+\begin{thebibliography}{1}
+
+\bibitem{allauzen2004generalized}
+Cyril Allauzen, Mehryar Mohri, Michael Riley, and Brian Roark.
+\newblock A generalized construction of integrated speech recognition
+  transducers.
+\newblock In {\em Acoustics, Speech, and Signal Processing, 2004.
+  Proceedings.(ICASSP'04). IEEE International Conference on}, volume~1, pages
+  I--761. IEEE, 2004.
+
+\bibitem{allauzen2003generalized}
+Cyril Allauzen, Mehryar Mohri, and Brian Roark.
+\newblock Generalized algorithms for constructing statistical language models.
+\newblock In {\em Proceedings of the 41st Annual Meeting on Association for
+  Computational Linguistics-Volume 1}, pages 40--47. Association for
+  Computational Linguistics, 2003.
+
+\bibitem{dixonintroduction}
+Paul Dixon and Sadaoki Furui.
+\newblock Introduction to the use of wfsts in speech and language processing.
+
+\bibitem{garner2008silence}
+Philip~N Garner.
+\newblock Silence models in weighted finite-state transducers.
+\newblock In {\em Proceedings of Interspeech}, 2008.
+
+\bibitem{katz1987estimation}
+Slava Katz.
+\newblock Estimation of probabilities from sparse data for the language model
+  component of a speech recognizer.
+\newblock {\em Acoustics, Speech and Signal Processing, IEEE Transactions on},
+  35(3):400--401, 1987.
+
+\bibitem{mohri2009weighted}
+Mehryar Mohri.
+\newblock Weighted automata algorithms.
+\newblock In {\em Handbook of weighted automata}, pages 213--254. Springer,
+  2009.
+
+\bibitem{mohri2008speech}
+Mehryar Mohri, Fernando~CN Pereira, and Michael Riley.
+\newblock Speech recognition with weighted finite-state transducers.
+\newblock {\em Handbook of Speech Processing}, pages 559--582, 2008.
+
+\bibitem{young2006htk}
+Steve~J Young, Gunnar Evermann, MJF Gales, D~Kershaw, G~Moore, JJ~Odell,
+  DG~Ollason, D~Povey, V~Valtchev, and PC~Woodland.
+\newblock The htk book version 3.4.
+\newblock 2006.
+
+\end{thebibliography}

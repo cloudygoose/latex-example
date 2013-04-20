@@ -1,0 +1,50 @@
+This is BibTeX, Version 0.99d (TeX Live 2012)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: tech.aux
+The style file: plain.bst
+Database file #1: ref.bib
+Warning--empty journal in dixonintroduction
+Warning--empty year in dixonintroduction
+Warning--empty journal in young2006htk
+You've used 8 entries,
+            2118 wiz_defined-function locations,
+            543 strings with 5494 characters,
+and the built_in function-call counts, 3102 in all, are:
+= -- 306
+> -- 146
+< -- 5
++ -- 60
+- -- 50
+* -- 205
+:= -- 497
+add.period$ -- 26
+call.type$ -- 8
+change.case$ -- 49
+chr.to.int$ -- 0
+cite$ -- 11
+duplicate$ -- 129
+empty$ -- 238
+format.name$ -- 50
+if$ -- 665
+int.to.chr$ -- 0
+int.to.str$ -- 8
+missing$ -- 8
+newline$ -- 42
+num.names$ -- 16
+pop$ -- 65
+preamble$ -- 1
+purify$ -- 41
+quote$ -- 0
+skip$ -- 93
+stack$ -- 0
+substring$ -- 177
+swap$ -- 40
+text.length$ -- 5
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 32
+warning$ -- 3
+while$ -- 30
+width$ -- 9
+write$ -- 87
+(There were 3 warnings)
