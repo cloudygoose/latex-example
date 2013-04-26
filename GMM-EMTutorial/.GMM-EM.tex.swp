@@ -70,7 +70,7 @@ In this example, we see that Guassian Mixture describes the data better a single
 
 
 \begin{frame}
-\frametitle{Another representation of the Guassian Mixture}
+\frametitle{The latent variable}
 Given a Guassian Mixture model, we introduce K-dimensional binary random variable z which only one element $z_k$ is euqal to 1 and the others are all 0.\\
 \begin{equation}
 z=(0,0,..,1,0,..0)
@@ -79,28 +79,51 @@ So there are K possible states for z.And we let
 \begin{equation}
 p(z_k=1) = \pi_k
 \end{equation}
-
+That is to say, 
+\begin{equation}
+p(z) = \prod^K_{k=1}{\pi_k}^{z_k}
+\end{equation}
 \end{frame}
-
 
 \begin{frame}
-\frametitle{Even more structural elements}
-\framesubtitle{Verse, Quote and Quotation}
-
-\begin{verse}
-This is a text in verse style.
-\end{verse}
-
-\begin{quote}
-This is a quote.
-\end{quote}
-
-\begin{quotation}
-While this is a quotation. Note how it has a larger indentation in the first line.
-\end{quotation}
-
+\frametitle{The latent variable}
+Then, we define the conditional distribution of x given a particular z:
+\begin{equation}
+p(x|z_k=1)=\mathcal{N}(x|\mu_k,\Sigma_k)
+\end{equation}
+which can also be written as:
+\begin{equation}
+p(x|z)=\prod^K_{k=1}{\mathcal{N}(x|\mu_k,\Sigma_k)}^{z_k}
+\end{equation}
+Now we can easily compute the marginal distribution of x
+\begin{displaymath}
+\begin{split}
+p(x) = \Sigma_zp(x|z)p(z) &= \Sigma_z\prod^K_{k=1}{\mathcal{N}(x|\mu_k,\Sigma_k)}^{z_k}
+\prod^K_{k=1}{\pi_k}^{z_k}\\
+ &=\Sigma^K_{k=1}\pi_k\mathcal{N}(x|\mu_k,\Sigma_k)
+\end{split}
+\end{displaymath}
 \end{frame}
 
+\begin{frame}
+\frametitle{The latent variable}
+\begin{figure}
+\includegraphics[width=110pt]{latent-variable.png}
+\end{figure}
+Now, instead of working with $p(x)$ we can work with $p(x,z) = p(x|z)p(z)$, which will lead to significant simplification when we are introducing the EM algorithm.
+\end{frame}
+
+\begin{frame}
+\frametitle{The latent variable}
+Another quantity $p(z|x)$ will also be very important. We use $\gamma (z_k)$ to denote $p(z_k=1|x)$, and we can use Bayes' theorem to deride its value.
+\begin{equation}
+\begin{split}
+\gamma (z_k) = p(z_k=1|x) 
+&= \frac{p(x|z_k=1)p(z_k=1)}{p(x)} \\
+&= \frac{\mathcal{N}(x|\mu_k, \Sigma_k)}{\Sigma^K_{k=1}\pi_k\mathcal{N}(x|\mu_k,\Sigma_k)}
+\end{split}
+\end{equation}
+\end{frame}
 
 \subsection{Maths}
 \begin{frame}
