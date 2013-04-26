@@ -1,0 +1,81 @@
+% Beamer Color Theme ``Cambridge UK'', sporting the house colors of the University of Cambridge, UK
+% Adapted from beamercolorthemebeetle by Till Tantau
+% Philipp Hennig, 2008.
+%
+% This file may be distributed and/or modified
+%
+% 1. under the LaTeX Project Public License and/or
+% 2. under the GNU Public License.
+%
+% See the file doc/licenses/LICENSE for more details.
+
+\ProvidesPackageRCS $Header: /cvsroot/latex-beamer/latex-beamer/themes/color/beamercolorthemecambridgeuk.sty,v 1.0 2008/06/24 10:00:34 hennig Exp $
+
+
+\mode<presentation>
+
+%% RGB definition of Camrbidge Colors, as defined by UC Communication Services
+%% should be {cmyk}{...} vales, but the University insists on RGB models %%%
+
+\definecolor{cambridgedarkblue}{RGB}{0,62,114}
+\definecolor{cambridgeblue}{RGB}{0,115,207}
+\definecolor{cambridgelightblue}{RGB}{106,173,228}
+
+\definecolor{cambridgedarkorange}{RGB}{200,78,0}
+\definecolor{cambridgeorange}{RGB}{227,114,34}
+\definecolor{cambridgelightorange}{RGB}{239,189,71}
+
+\definecolor{cambridgedarkgreen}{RGB}{67,81,37}
+\definecolor{cambridgegreen}{RGB}{88,166,24}
+\definecolor{cambridgelightgreen}{RGB}{168,180,0}
+
+\definecolor{cambridgedarkviolet}{RGB}{65,45,93}
+\definecolor{cambridgeviolet}{RGB}{142,37,141}
+\definecolor{cambridgelightviolet}{RGB}{181,147,155}
+
+\definecolor{cambridgedarkazur}{RGB}{21,101,112}
+\definecolor{cambridgeazur}{RGB}{0,179,190}
+\definecolor{cambridgesportingblue}{RGB}{163,193,173}
+
+
+\setbeamercolor{normal text}{fg=black,bg=white}
+\setbeamercolor{structure}{fg=cambridgedarkblue}
+
+\setbeamercolor{alerted text}{fg = cambridgeorange}
+\setbeamercolor{example text}{fg = cambridgedarkblue}
+
+\setbeamercolor{item projected}{use=item,fg=black,bg = cambridgedarkblue}
+
+\setbeamercolor*{palette primary}{fg=white,bg=cambridgeblue}
+\setbeamercolor*{palette secondary}{parent=palette primary,use=palette primary,bg=cambridgeblue}
+\setbeamercolor*{palette tertiary}{parent=palette primary,use=palette primary,fg=white,bg=cambridgedarkblue}
+\setbeamercolor*{palette quaternary}{parent=palette primary,use=palette primary,bg=cambridgeorange}
+
+\setbeamercolor*{block body}{bg=cambridgeblue, fg = white}
+\setbeamercolor*{block body example}{bg=cambridgeblue, fg=white}
+\setbeamercolor*{block title}{parent=structure,bg=cambridgedarkblue,fg=white}
+\setbeamercolor*{block title example}{bg=cambridgedarkblue,fg= white}
+
+\setbeamercolor*{sidebar}{parent=palette primary}
+
+\setbeamercolor*{palette sidebar primary}{fg=cambridgelightorange}
+\setbeamercolor*{palette sidebar secondary}{fg=black}
+\setbeamercolor*{palette sidebar tertiary}{fg=white}
+\setbeamercolor*{palette sidebar quaternary}{fg=black}
+
+\setbeamercolor{frametitle}{bg=cambridgedarkblue,fg=cambridgelightorange}
+\setbeamercolor{frametitle right}{bg=white}
+\setbeamercolor{framesubtitle}{fg=white}
+\setbeamercolor{title}{bg=white,fg=cambridgedarkblue}
+\setbeamercolor{subtitle}{fg=cambridgedarkorange}
+
+\setbeamercolor{block title}{parent=structure}
+\setbeamercolor{block title example}{parent=example text}
+\setbeamercolor{block body}{}
+\setbeamercolor{block body alerted}{}
+\setbeamercolor{block body example}{}
+
+\setbeamercolor*{titlelike}{parent=structure}
+
+\mode
+<all>
