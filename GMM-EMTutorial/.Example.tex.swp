@@ -1,0 +1,28 @@
+\documentclass{beamer}
+\usepackage{float}
+\title{A Tutorial on EM for HMM}
+\subtitle{A try on YuChen's \LaTeX~Beamer template}
+\author{Goose He}
+\date{March 2013}
+
+\usetheme{CambridgeUK}
+
+\begin{document}
+
+\begin{frame}
+\frametitle{A quick introduction to MLE}
+adadadadad
+\end{frame}
+
+\section*{Bibliography}
+
+\begin{frame}%[allowframebreaks] % add this if you have more papers to cite than fit on a slide.
+\frametitle{Bibliography}
+\begin{thebibliography}{Tantau, 2007}
+\bibitem[KaiYu, 2006]{Kai}
+Adaptive Training for Large Vocabulary Continuous Speech Recognition
+\bibitem[A.P.Dempster, 1977]{Dempster}
+Maximum likelihood from incomplete data via the EM algorithm
+\end{thebibliography}
+\end{frame}
+\end{document}
