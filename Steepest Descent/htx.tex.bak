@@ -1,0 +1,190 @@
+% THIS IS SIGPROC-SP.TEX - VERSION 3.1
+% WORKS WITH V3.2SP OF ACM_PROC_ARTICLE-SP.CLS
+% APRIL 2009
+%
+% It is an example file showing how to use the 'acm_proc_article-sp.cls' V3.2SP
+% LaTeX2e document class file for Conference Proceedings submissions.
+% ----------------------------------------------------------------------------------------------------------------
+% This .tex file (and associated .cls V3.2SP) *DOES NOT* produce:
+%       1) The Permission Statement
+%       2) The Conference (location) Info information
+%       3) The Copyright Line with ACM data
+%       4) Page numbering
+% ---------------------------------------------------------------------------------------------------------------
+% It is an example which *does* use the .bib file (from which the .bbl file
+% is produced).
+% REMEMBER HOWEVER: After having produced the .bbl file,
+% and prior to final submission,
+% you need to 'insert'  your .bbl file into your source .tex file so as to provide
+% ONE 'self-contained' source file.
+%
+% Questions regarding SIGS should be sent to
+% Adrienne Griscti ---> griscti@acm.org
+%
+% Questions/suggestions regarding the guidelines, .tex and .cls files, etc. to
+% Gerald Murray ---> murray@hq.acm.org
+%
+% For tracking purposes - this is V3.1SP - APRIL 2009
+
+\documentclass{acm_proc_article-sp}
+\usepackage{algorithm} %format of the algorithm
+\usepackage{algorithmic} %format of the algorithm
+\usepackage{graphics}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+\title{Discussion about the Steepest Descent Method}
+
+
+\numberofauthors{2}
+
+\author{
+% 1st. author
+\alignauthor
+Tianxing He\\
+       \affaddr{SJTU ACM10}\\
+       \email{cloudygooseg@gmail.com}
+% 2nd. author
+\alignauthor
+Fanyu Chen\\
+       \affaddr{SJTU ACM10}\\
+       \email{fyc0624@gmail.com}
+}
+\date{21 December 2012}
+
+\maketitle
+\begin{abstract}
+In our work, we explore the Steepest Descent method, which could be seen as an variation of the well-studied Gradient Descent method. First, we will give the exact definition of the Steepest Descent method, then we will give convergence analysis for both these two methods, which are very similar. \\
+Then, through our experiment, we showed the drastic impact on the performance of the Steepest Descent method by the choice norm we use. Finally, we try to use the Hessian to automatically construct the norm, which we put the G-S descent, but sadly failed.
+\end{abstract}
+
+\keywords{Convex optimization, Steepest descent}
+
+\section{INTRODUCTION}
+In the field of solving unconstrained optimization problem, one most well-known and well-studied method, is the Gradient Descent method, we first briefly introduce the Gradient Descent, which is shown in Algorithm \ref{alg:A}.\\
+In the step 2 of the Gradient Descent method, we must choose exact line search or backtracking line search, while exact line search is preferred, in our experiments we will use the backtracking line search, which is more easy to implement. The backtracking line search is shown in Algorithm \ref{alg:B}.
+\begin{algorithm}\caption{\label{alg:A}Gradient descent method.}
+\begin{algorithmic}
+\STATE \textbf{Given} a starting point $x \in \textbf{dom} f$
+\REPEAT
+\STATE 1. $\Delta x:=-\nabla f\left( x\right) $.
+\STATE 2. \textit{Line search.} Choose step size t via exact or backtracking line search.
+\STATE 3. \textit{Update.} $x:=x+t\Delta x$
+\UNTIL{stopping criterion is satisfied.}
+\end{algorithmic}
+\end{algorithm}
+
+\begin{algorithm}\caption{\label{alg:B}Backtracking line search.}
+\begin{algorithmic}
+\STATE \textbf{Given} a starting point $\bigtriangleup x$ for f at $x \in \textbf{dom} f, \alpha \in (0,0.5), \beta \in (0,1)$
+\STATE \textbf{While} $f(x + t\bigtriangleup x) > f(x) + \alpha t \nabla f(x)^T \bigtriangleup x$ \\
+{$t = \beta t$}
+\end{algorithmic}
+\end{algorithm}
+We have to mention due to some historical reasons the Gradient Descent is also called the Steepest Descent method$[1]$(Well, its direction is truly locally 'steepest'). However, the Steepest Descent method is another story.\\
+Let $||\cdot||$ be any norm on $R^n$. We define a normalized steepest descent direction(with respect to the norm $||\cdot||$) as
+\begin{displaymath}
+\Delta x _{nsd} = argmin\{ \nabla f(x)^Tv| ||v|| = 1\}
+\end{displaymath}
+Now we can give the Steepest descent method in Algorithm \ref{alg:C}.
+\begin{algorithm}\caption{\label{alg:C}Steepest descent method}
+\begin{algorithmic}
+\STATE \textbf{Given} a starting point $x \in \textbf{dom} f$
+\REPEAT
+\STATE 1. Compute steepest descent direction $\Delta x _{nsd}$.
+\STATE 2. \textit{Line search.} Choose step size t via exact or backtracking line search.
+\STATE 3. \textit{Update.} $x:=x+t\Delta x$
+\UNTIL{stopping criterion is satisfied.}
+\end{algorithmic}
+\end{algorithm}
+To get a better understanding of the Steepest Descent Method, let's look at some examples.
+\subsection{Steepest Descent for Euclidean and quadratic norms}
+If  we take the norm $||\cdot||$ to be the Euclidean norm, then the steepest descent direction is simply the negative gradient.\\
+Given a $P \in S^n_{++}$, now we consider the quadratic norm
+\begin{displaymath}
+||z||_P = (z^TPz)^{1/2} = ||P^{1/2}||_2
+\end{displaymath}
+The normalized steepest descent direction is given by 
+\begin{displaymath}
+\Delta x_{nsd} = -(\nabla f(x) ^ T P ^{-1} \nabla f(x))^{-1/2} P ^{-1} \nabla f(x)
+\end{displaymath}
+
+\section{Discussion and examples}
+\subsection{choice of norm for steepest descent}
+One important thing for the steepest descent method is to choose a good norm. In our convergence analysis, we know that the gradient method works well when the condition number of the sublevel sets are moderate, and poorly otherwise. Let's begin with the quadratic $P$-norm, we know that using the quadratic $P$-norm means that we change coordinates by $\overline{x} = P^{1/2}x$. So, a good idea would be to make the ellipsoid
+\begin{displaymath}
+\varepsilon = \{ x | x^TPx \leq 1\}
+\end{displaymath}
+be a good approximation of the shape of the sublevel set.(In other words, it gives a good approximation after appropriate scaling and translation.) \\
+Let's consider the following function :
+\begin{displaymath}
+g_1(x_1, x_2) = e ^ {x_1 + 3x_2 -0.1} + e ^ {x_1-3x_2-0.1} + e^{-x_1-0.1}
+\end{displaymath}
+For all three tries, we start at point$(-0.4,1)$, and use the backtracking line search with $\alpha=0.2$, $\beta=0.8$, and let the initial step be 1, the tolerance is 0.01. For the two steepest descent tries, we choose $P_1 = \begin{array}{cc} 1/2 & 0 \\ 0 & 1/4\end{array}$ and
+$P_2 = \begin{array}{cc} 1/4 & 0 \\ 0 & 1/2\end{array}$, the results are shown in Figure \ref{fig:htx1}.\\
+We also add the shape of the norms on the graphs. From the results, we can clearly see that the norm $P_1$, which is a better
+approximate of the sublevel set, give the best result. And we we use $P_2$, it becomes worse than the original gradient descent. \\
+\begin{figure}
+        \begin{tabular}{cc}
+            \includegraphics[width=40mm]{htx1-1.jpg} &
+            \includegraphics[width=40mm]{htx1-2.jpg} \\
+            G-descent : 11 iterations&
+            S-descent with $P_1$ : 6 iterations \\
+            \includegraphics[width=40mm]{htx1-3.jpg} \\
+            S-descent with $P_2$ : 29 iterations
+        \end{tabular}
+    \caption{\label{fig:htx1}Three methods for $g_1$.}
+\end{figure}
+To further illustrate the power of the steepest descent method, we choose a function which is exactly a ellipse:
+\begin{displaymath}
+g_2(x_1, x_2) = x_1 ^ 2 + 8 * x_2 ^ 2
+\end{displaymath}
+The result are shown in Figure \ref{fig:htx2}, from which we can see the drastic effect imposed by the choice of the norm, we omit the parameters here.
+\begin{figure}
+        \begin{tabular}{cc}
+            \includegraphics[width=40mm]{htx2-1.jpg} &
+            \includegraphics[width=40mm]{htx2-2.jpg} \\
+            G-descent : 23 iterations&
+            S-descent with $P_1$ : 10 iterations \\
+            \includegraphics[width=40mm]{htx2-3.jpg} \\
+            S-descent with $P_2$ : 134 iterations
+        \end{tabular}
+    \caption{\label{fig:htx2}Three methods for $g_2$.}
+\end{figure}
+\subsection{attempts to construct the norm using Hessian}
+Now we know how could we use norm to aid the gradient descent method. One important issue still remains: how could we find the best norm? From the Taylor series, we know that around the local optima $x^{\star}$,
+\begin{displaymath}
+f(y) \approx p^{\star} + \frac{1}{2} (y - x^\star)^T\nabla^2f(x^\star)(y-x^\star)
+\end{displaymath}
+So we know the sublevel set near the local optima is well approximated by an elliposid. Now we try to use the Hessian as the $P$, which means, let
+\begin{displaymath}
+P = \nabla^2f(x)
+\end{displaymath}
+However, this is sometimes invalid: we need the $P$ to be semi-definite.\\
+Given this insight, let's consider the simplified $g_1$
+\begin{displaymath}
+g_3(x_1, x_2) = e ^ {x_1 + 3x_2} + e ^ {x_1-3x_2} + e^{-x_1}
+\end{displaymath}
+First we want to let the $P = \nabla^2f(x)$ every step, but we failed, when we peek at the results, we found that the $P$s are really ill-presented, we concluded that the reason is that we are not near the optima.\\
+To get the hessian be a good approximation, a second thought is that we can exploit the long-tail property of the descent methods, that is: The start point is (0.9,0.9), At first we set the $P$ to be the identity matrix, i.e, exactly do the gradient descent, however, when $\nabla f(x) < tolerance * 10$, we switch the $P$ to be the local Hessian, let's call this the G-S descent.
+\begin{figure}
+        \begin{tabular}{cc}
+            \includegraphics[width=40mm]{htx3-1.jpg} &
+            \includegraphics[width=40mm]{htx3-2.jpg} \\
+            G-descent : 15 iterations&
+            G-S-descent with Hessian : 19 iterations \\
+        \end{tabular}
+    \caption{\label{fig:htx3}Two methods for $g_3$.}
+\end{figure}
+Sadly, the G-S only slow downs the process, which is not hard to understand, when the x converges to the optima, the direction of the gradient becomes stable, so the norm won't do any good. So, if we choose to use the Steepest Descent, we should use the norm we choose from the beginning.
+\section{CONCLUSIONS}
+
+
+\section{REFERENCES}
+Nonlinear Programming: Analysis and Methods Dover Publishing\\
+Convex Optimization Stephen Boyd and Lieven Vandenberghe\\
+\balancecolumns
+% That's all folks!
+\end{document}
+

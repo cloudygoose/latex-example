@@ -1,0 +1,567 @@
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/W32TeX) (format=pdflatex 2012.8.19)  17 JAN 2013 17:36
+entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**htx.tex
+(./htx.tex
+LaTeX2e <2011/06/27>
+Babel <v3.8m> and hyphenation patterns for english, dumylang, nohyphenation, ge
+rman-x-2012-05-30, ngerman-x-2012-05-30, afrikaans, ancientgreek, ibycus, arabi
+c, armenian, basque, bulgarian, catalan, pinyin, coptic, croatian, czech, danis
+h, dutch, ukenglish, usenglishmax, esperanto, estonian, ethiopic, farsi, finnis
+h, french, friulan, galician, german, ngerman, swissgerman, monogreek, greek, h
+ungarian, icelandic, assamese, bengali, gujarati, hindi, kannada, malayalam, ma
+rathi, oriya, panjabi, tamil, telugu, indonesian, interlingua, irish, italian, 
+kurmanji, latin, latvian, lithuanian, mongolian, mongolianlmc, bokmal, nynorsk,
+ polish, portuguese, romanian, romansh, russian, sanskrit, serbian, serbianc, s
+lovak, slovenian, spanish, swedish, turkish, turkmen, ukrainian, uppersorbian, 
+welsh, loaded.
+(./acm_proc_article-sp.cls
+(c:/texlive/2012/texmf-dist/tex/latex/graphics/epsfig.sty
+Package: epsfig 1999/02/16 v1.7a (e)psfig emulation (SPQR)
+
+(c:/texlive/2012/texmf-dist/tex/latex/graphics/graphicx.sty
+Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
+
+(c:/texlive/2012/texmf-dist/tex/latex/graphics/keyval.sty
+Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
+\KV@toks@=\toks14
+)
+(c:/texlive/2012/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
+
+(c:/texlive/2012/texmf-dist/tex/latex/graphics/trig.sty
+Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
+)
+(c:/texlive/2012/texmf-dist/tex/latex/latexconfig/graphics.cfg
+File: graphics.cfg 2010/04/23 v1.9 graphics configuration of TeX Live
+)
+Package graphics Info: Driver file: pdftex.def on input line 91.
+
+(c:/texlive/2012/texmf-dist/tex/latex/pdftex-def/pdftex.def
+File: pdftex.def 2011/05/27 v0.06d Graphics/color for pdfTeX
+
+(c:/texlive/2012/texmf-dist/tex/generic/oberdiek/infwarerr.sty
+Package: infwarerr 2010/04/08 v1.3 Providing info/warning/error messages (HO)
+)
+(c:/texlive/2012/texmf-dist/tex/generic/oberdiek/ltxcmds.sty
+Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
+)
+\Gread@gobject=\count79
+))
+\Gin@req@height=\dimen102
+\Gin@req@width=\dimen103
+)
+\epsfxsize=\dimen104
+\epsfysize=\dimen105
+)
+(c:/texlive/2012/texmf-dist/tex/latex/amsfonts/amssymb.sty
+Package: amssymb 2009/06/22 v3.00
+
+(c:/texlive/2012/texmf-dist/tex/latex/amsfonts/amsfonts.sty
+Package: amsfonts 2009/06/22 v3.00 Basic AMSFonts support
+\@emptytoks=\toks15
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 96.
+))
+(c:/texlive/2012/texmf-dist/tex/latex/amsmath/amsmath.sty
+Package: amsmath 2000/07/18 v2.13 AMS math features
+\@mathmargin=\skip41
+
+For additional information on amsmath, use the `?' option.
+(c:/texlive/2012/texmf-dist/tex/latex/amsmath/amstext.sty
+Package: amstext 2000/06/29 v2.01
+
+(c:/texlive/2012/texmf-dist/tex/latex/amsmath/amsgen.sty
+File: amsgen.sty 1999/11/30 v2.0
+\@emptytoks=\toks16
+\ex@=\dimen106
+))
+(c:/texlive/2012/texmf-dist/tex/latex/amsmath/amsbsy.sty
+Package: amsbsy 1999/11/29 v1.2d
+\pmbraise@=\dimen107
+)
+(c:/texlive/2012/texmf-dist/tex/latex/amsmath/amsopn.sty
+Package: amsopn 1999/12/14 v2.01 operator names
+)
+\inf@bad=\count80
+LaTeX Info: Redefining \frac on input line 211.
+\uproot@=\count81
+\leftroot@=\count82
+LaTeX Info: Redefining \overline on input line 307.
+\classnum@=\count83
+\DOTSCASE@=\count84
+LaTeX Info: Redefining \ldots on input line 379.
+LaTeX Info: Redefining \dots on input line 382.
+LaTeX Info: Redefining \cdots on input line 467.
+\Mathstrutbox@=\box26
+\strutbox@=\box27
+\big@size=\dimen108
+LaTeX Font Info:    Redeclaring font encoding OML on input line 567.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 568.
+\macc@depth=\count85
+\c@MaxMatrixCols=\count86
+\dotsspace@=\muskip10
+\c@parentequation=\count87
+\dspbrk@lvl=\count88
+\tag@help=\toks17
+\row@=\count89
+\column@=\count90
+\maxfields@=\count91
+\andhelp@=\toks18
+\eqnshift@=\dimen109
+\alignsep@=\dimen110
+\tagshift@=\dimen111
+\tagwidth@=\dimen112
+\totwidth@=\dimen113
+\lineht@=\dimen114
+\@envbody=\toks19
+\multlinegap=\skip42
+\multlinetaggap=\skip43
+\mathdisplay@stack=\toks20
+LaTeX Info: Redefining \[ on input line 2666.
+LaTeX Info: Redefining \] on input line 2667.
+)
+Document Class 'acm_proc_article-sp' <22nd. April '09>. Modified by G.K.M. Tobi
+n
+Based in part upon document Style `acmconf' <22 May 89>. Hacked 4/91 by
+shivers@cs.cmu.edu, 4/93 by theobald@cs.mcgill.ca
+Excerpts were taken from (Journal Style) 'esub2acm.cls'.
+****** Bugs/comments/suggestions to Gerry Murray -- murray@hq.acm.org ******
+\footheight=\dimen115
+\@maxsep=\dimen116
+\@dblmaxsep=\dimen117
+\aucount=\count92
+\originalaucount=\count93
+\auwidth=\dimen118
+\auskip=\dimen119
+\auskipcount=\count94
+\auskip=\dimen120
+\allauboxes=\dimen121
+\addauthors=\toks21
+\addauflag=\count95
+\subtitletext=\toks22
+\savesection=\count96
+\sectioncntr=\count97
+\c@figure=\count98
+\c@table=\count99
+\titleboxnotes=\toks23
+\titleboxnoteflag=\count100
+Document Class: acm_proc_article-sp 2009/04/22 - V3.2SP - based on esub2acm.sty
+ <23 April 96>
+(c:/texlive/2012/texmf-dist/tex/latex/base/latexsym.sty
+Package: latexsym 1998/08/17 v2.2e Standard LaTeX package (lasy symbols)
+\symlasy=\mathgroup6
+LaTeX Font Info:    Overwriting symbol font `lasy' in version `bold'
+(Font)                  U/lasy/m/n --> U/lasy/b/n on input line 47.
+)
+\@acmtitlebox=\box28
+\titlenotecount=\count101
+\tntoks=\toks24
+\tntokstwo=\toks25
+\tntoksthree=\toks26
+\tntoksfour=\toks27
+\tntoksfive=\toks28
+\catcount=\count102
+\copyrightnotice=\toks29
+\conf=\toks30
+\confinfo=\toks31
+\c@part=\count103
+\c@section=\count104
+\c@subsection=\count105
+\c@subsubsection=\count106
+\c@paragraph=\count107
+
+Using 'Abbrev' bibliography style
+LaTeX Info: Redefining \cite on input line 1236.
+\bibindent=\dimen122
+\colcntr=\count108
+\saveb@x=\box29
+\copyrtyr=\toks32
+\acmcopyr=\toks33
+\boilerplate=\toks34
+\copyrightetc=\toks35
+(c:/texlive/2012/texmf-dist/tex/latex/base/fontenc.sty
+Package: fontenc 2005/09/27 v1.99g Standard LaTeX package
+
+(c:/texlive/2012/texmf-dist/tex/latex/base/t1enc.def
+File: t1enc.def 2005/09/27 v1.99g Standard LaTeX file
+LaTeX Font Info:    Redeclaring font encoding T1 on input line 43.
+)
+LaTeX Font Info:    Try loading font information for T1+aer on input line 100.
+
+(c:/texlive/2012/texmf-dist/tex/latex/ae/t1aer.fd
+File: t1aer.fd 1997/11/16 Font definitions for T1/aer.
+)))
+(c:/texlive/2012/texmf-dist/tex/latex/algorithms/algorithm.sty
+Package: algorithm 2009/08/24 v0.1 Document Style `algorithm' - floating enviro
+nment
+
+(c:/texlive/2012/texmf-dist/tex/latex/float/float.sty
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count109
+\float@exts=\toks36
+\float@box=\box30
+\@float@everytoks=\toks37
+\@floatcapt=\box31
+)
+(c:/texlive/2012/texmf-dist/tex/latex/base/ifthen.sty
+Package: ifthen 2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
+)
+\@float@every@algorithm=\toks38
+\c@algorithm=\count110
+)
+(c:/texlive/2012/texmf-dist/tex/latex/algorithms/algorithmic.sty
+Package: algorithmic 2009/08/24 v0.1 Document Style `algorithmic'
+\c@ALC@unique=\count111
+\c@ALC@line=\count112
+\c@ALC@rem=\count113
+\c@ALC@depth=\count114
+\ALC@tlm=\skip44
+\algorithmicindent=\skip45
+) (./htx.aux)
+\openout1 = `htx.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+
+(c:/texlive/2012/texmf-dist/tex/context/base/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count115
+\scratchdimen=\dimen123
+\scratchbox=\box32
+\nofMPsegments=\count116
+\nofMParguments=\count117
+\everyMPshowfont=\toks39
+\MPscratchCnt=\count118
+\MPscratchDim=\dimen124
+\MPnumerator=\count119
+\makeMPintoPDFobject=\count120
+\everyMPtoPDFconversion=\toks40
+) (c:/texlive/2012/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
+Package: pdftexcmds 2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO
+)
+
+(c:/texlive/2012/texmf-dist/tex/generic/oberdiek/ifluatex.sty
+Package: ifluatex 2010/03/01 v1.3 Provides the ifluatex switch (HO)
+Package ifluatex Info: LuaTeX not detected.
+)
+(c:/texlive/2012/texmf-dist/tex/generic/oberdiek/ifpdf.sty
+Package: ifpdf 2011/01/30 v2.3 Provides the ifpdf switch (HO)
+Package ifpdf Info: pdfTeX in PDF mode is detected.
+)
+Package pdftexcmds Info: LuaTeX not detected.
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode found.
+)
+(c:/texlive/2012/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
+Package: epstopdf-base 2010/02/09 v2.5 Base part for package epstopdf
+
+(c:/texlive/2012/texmf-dist/tex/latex/oberdiek/grfext.sty
+Package: grfext 2010/08/19 v1.1 Manage graphics extensions (HO)
+
+(c:/texlive/2012/texmf-dist/tex/generic/oberdiek/kvdefinekeys.sty
+Package: kvdefinekeys 2011/04/07 v1.3 Define keys (HO)
+))
+(c:/texlive/2012/texmf-dist/tex/latex/oberdiek/kvoptions.sty
+Package: kvoptions 2011/06/30 v3.11 Key value format for package options (HO)
+
+(c:/texlive/2012/texmf-dist/tex/generic/oberdiek/kvsetkeys.sty
+Package: kvsetkeys 2012/04/25 v1.16 Key value parser (HO)
+
+(c:/texlive/2012/texmf-dist/tex/generic/oberdiek/etexcmds.sty
+Package: etexcmds 2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
+Package etexcmds Info: Could not find \expanded.
+(etexcmds)             That can mean that you are not using pdfTeX 1.50 or
+(etexcmds)             that some package has redefined \expanded.
+(etexcmds)             In the latter case, load this package earlier.
+)))
+Package grfext Info: Graphics extension search list:
+(grfext)             [.png,.pdf,.jpg,.mps,.jpeg,.jbig2,.jb2,.PNG,.PDF,.JPG,.JPE
+G,.JBIG2,.JB2,.eps]
+(grfext)             \AppendGraphicsExtensions on input line 452.
+
+(c:/texlive/2012/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
+e
+))
+LaTeX Font Info:    Try loading font information for U+msa on input line 56.
+
+(c:/texlive/2012/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2009/06/22 v3.00 AMS symbols A
+)
+LaTeX Font Info:    Try loading font information for U+msb on input line 56.
+
+(c:/texlive/2012/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2009/06/22 v3.00 AMS symbols B
+)
+LaTeX Font Info:    Try loading font information for U+lasy on input line 56.
+
+(c:/texlive/2012/texmf-dist/tex/latex/base/ulasy.fd
+File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
+)
+<backtracking.jpg, id=1, 683.88834pt x 364.69583pt>
+File: backtracking.jpg Graphic file (type jpg)
+ <use backtracking.jpg>
+Package pdftex.def Info: backtracking.jpg used on input line 79.
+(pdftex.def)             Requested size: 227.62204pt x 121.38504pt.
+
+Overfull \hbox (15.38783pt too wide) in paragraph at lines 90--92
+\T1/aer/m/n/9 di-ent De-scent is also called the Steep-est De-scent method[1](W
+ell,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 90--92
+
+ []
+
+[1{c:/texlive/2012/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
+
+
+ <./backtracking.jpg>]
+Missing character: There is no â in font cmr9!
+Missing character: There is no ˆ in font cmr9!
+Missing character: There is no ’ in font cmr9!
+Missing character: There is no â in font cmr9!
+Missing character: There is no ˆ in font cmr9!
+Missing character: There is no ’ in font cmr9!
+Missing character: There is no â in font cmr9!
+Missing character: There is no ˆ in font cmr9!
+Missing character: There is no ’ in font cmr9!
+Missing character: There is no â in font cmr9!
+Missing character: There is no ˆ in font cmr9!
+Missing character: There is no ’ in font cmr9!
+Missing character: There is no â in font cmr9!
+Missing character: There is no ˆ in font cmr9!
+Missing character: There is no ’ in font cmr9!
+Missing character: There is no â in font cmr9!
+Missing character: There is no ˆ in font cmr9!
+Missing character: There is no ’ in font cmr9!
+Missing character: There is no â in font cmr6!
+Missing character: There is no ‹ in font cmr6!
+Missing character: There is no † in font cmr6!
+Missing character: There is no â in font cmr9!
+Missing character: There is no ˆ in font cmr9!
+Missing character: There is no ’ in font cmr9!
+Missing character: There is no â in font cmr6!
+Missing character: There is no ‹ in font cmr6!
+Missing character: There is no † in font cmr6!
+Missing character: There is no â in font cmr9!
+Missing character: There is no ˆ in font cmr9!
+Missing character: There is no ’ in font cmr9!
+Missing character: There is no â in font cmr6!
+Missing character: There is no ‹ in font cmr6!
+Missing character: There is no † in font cmr6!
+Missing character: There is no â in font cmr9!
+Missing character: There is no ˆ in font cmr9!
+Missing character: There is no ’ in font cmr9!
+Missing character: There is no â in font cmr6!
+Missing character: There is no ‹ in font cmr6!
+Missing character: There is no † in font cmr6!
+Missing character: There is no â in font cmr9!
+Missing character: There is no ˆ in font cmr9!
+Missing character: There is no ’ in font cmr9!
+Missing character: There is no â in font cmr6!
+Missing character: There is no ‹ in font cmr6!
+Missing character: There is no † in font cmr6!
+Missing character: There is no â in font cmr9!
+Missing character: There is no ˆ in font cmr9!
+Missing character: There is no ’ in font cmr9!
+Missing character: There is no â in font cmr6!
+Missing character: There is no ‹ in font cmr6!
+Missing character: There is no † in font cmr6!
+Missing character: There is no â in font cmr9!
+Missing character: There is no ˆ in font cmr9!
+Missing character: There is no ’ in font cmr9!
+Missing character: There is no â in font cmr6!
+Missing character: There is no ‹ in font cmr6!
+Missing character: There is no † in font cmr6!
+
+Overfull \hbox (2.65123pt too wide) in paragraph at lines 137--140
+[]\T1/aer/m/n/9 This bound on the num-ber of it-er-a-tions re-quired, even thou
+gh
+ []
+
+Missing character: There is no â in font cmr9!
+Missing character: There is no ˆ in font cmr9!
+Missing character: There is no ’ in font cmr9!
+Missing character: There is no â in font cmr6!
+Missing character: There is no ‹ in font cmr6!
+Missing character: There is no † in font cmr6!
+Missing character: There is no â in font cmr6!
+Missing character: There is no ‹ in font cmr6!
+Missing character: There is no † in font cmr6!
+Missing character: There is no â in font cmr9!
+Missing character: There is no ˆ in font cmr9!
+Missing character: There is no ’ in font cmr9!
+Missing character: There is no â in font cmr9!
+Missing character: There is no ˆ in font cmr9!
+Missing character: There is no ’ in font cmr9!
+Missing character: There is no â in font cmr6!
+Missing character: There is no ‹ in font cmr6!
+Missing character: There is no † in font cmr6!
+Missing character: There is no â in font cmr9!
+Missing character: There is no ˆ in font cmr9!
+Missing character: There is no ’ in font cmr9!
+Missing character: There is no â in font cmr6!
+Missing character: There is no ‹ in font cmr6!
+Missing character: There is no † in font cmr6!
+Missing character: There is no â in font cmr9!
+Missing character: There is no ˆ in font cmr9!
+Missing character: There is no ’ in font cmr9!
+Missing character: There is no â in font cmr9!
+Missing character: There is no ˆ in font cmr9!
+Missing character: There is no ’ in font cmr9!
+Missing character: There is no â in font cmr9!
+Missing character: There is no ˆ in font cmr9!
+Missing character: There is no ’ in font cmr9!
+Missing character: There is no â in font cmr9!
+Missing character: There is no ˆ in font cmr9!
+Missing character: There is no ’ in font cmr9!
+Missing character: There is no â in font cmr9!
+Missing character: There is no ˆ in font cmr9!
+Missing character: There is no ’ in font cmr9!
+Missing character: There is no â in font cmr9!
+Missing character: There is no ˆ in font cmr9!
+Missing character: There is no ’ in font cmr9!
+Missing character: There is no â in font cmr9!
+Missing character: There is no ˆ in font cmr9!
+Missing character: There is no ’ in font cmr9!
+Missing character: There is no â in font cmr9!
+Missing character: There is no ˆ in font cmr9!
+Missing character: There is no ’ in font cmr9!
+Missing character: There is no â in font cmr6!
+Missing character: There is no ‹ in font cmr6!
+Missing character: There is no † in font cmr6!
+Missing character: There is no â in font cmr9!
+Missing character: There is no ˆ in font cmr9!
+Missing character: There is no ’ in font cmr9!
+Missing character: There is no â in font cmr9!
+Missing character: There is no ˆ in font cmr9!
+Missing character: There is no ’ in font cmr9!
+Missing character: There is no â in font cmr9!
+Missing character: There is no ˆ in font cmr9!
+Missing character: There is no ’ in font cmr9!
+Missing character: There is no â in font cmr6!
+Missing character: There is no ‹ in font cmr6!
+Missing character: There is no † in font cmr6!
+Missing character: There is no â in font cmr9!
+Missing character: There is no ˆ in font cmr9!
+Missing character: There is no ’ in font cmr9!
+Missing character: There is no â in font cmr6!
+Missing character: There is no ‹ in font cmr6!
+Missing character: There is no † in font cmr6!
+[2]
+Missing character: There is no â in font cmr6!
+Missing character: There is no ‹ in font cmr6!
+Missing character: There is no † in font cmr6!
+
+Overfull \hbox (16.0895pt too wide) in paragraph at lines 217--217
+[]\secfnt Steepest De-scent for Eu-clidean and quadratic
+ []
+
+<htx1-1.jpg, id=23, 421.575pt x 316.18124pt>
+File: htx1-1.jpg Graphic file (type jpg)
+ <use htx1-1.jpg>
+Package pdftex.def Info: htx1-1.jpg used on input line 257.
+(pdftex.def)             Requested size: 156.49014pt x 117.36636pt.
+
+<htx1-2.jpg, id=24, 421.575pt x 316.18124pt>
+File: htx1-2.jpg Graphic file (type jpg)
+ <use htx1-2.jpg>
+Package pdftex.def Info: htx1-2.jpg used on input line 258.
+(pdftex.def)             Requested size: 156.49014pt x 117.36636pt.
+
+<htx1-3.jpg, id=25, 421.575pt x 316.18124pt>
+File: htx1-3.jpg Graphic file (type jpg)
+ <use htx1-3.jpg>
+Package pdftex.def Info: htx1-3.jpg used on input line 259.
+(pdftex.def)             Requested size: 156.49014pt x 117.36636pt.
+
+Overfull \hbox (4.9031pt too wide) in paragraph at lines 250--267
+\T1/aer/m/n/9 To fur-ther il-lus-trate the power of the steep-est de-scent meth
+od,
+ []
+
+<htx2-1.jpg, id=26, 421.575pt x 316.18124pt>
+File: htx2-1.jpg Graphic file (type jpg)
+ <use htx2-1.jpg>
+Package pdftex.def Info: htx2-1.jpg used on input line 273.
+(pdftex.def)             Requested size: 156.49014pt x 117.36636pt.
+
+<htx2-2.jpg, id=27, 421.575pt x 316.18124pt>
+File: htx2-2.jpg Graphic file (type jpg)
+ <use htx2-2.jpg>
+Package pdftex.def Info: htx2-2.jpg used on input line 274.
+(pdftex.def)             Requested size: 156.49014pt x 117.36636pt.
+
+<htx2-3.jpg, id=28, 421.575pt x 316.18124pt>
+File: htx2-3.jpg Graphic file (type jpg)
+ <use htx2-3.jpg>
+Package pdftex.def Info: htx2-3.jpg used on input line 275.
+(pdftex.def)             Requested size: 156.49014pt x 117.36636pt.
+
+<htx3-1.jpg, id=29, 421.575pt x 316.18124pt>
+File: htx3-1.jpg Graphic file (type jpg)
+ <use htx3-1.jpg>
+Package pdftex.def Info: htx3-1.jpg used on input line 300.
+(pdftex.def)             Requested size: 156.49014pt x 117.36636pt.
+
+<htx3-2.jpg, id=30, 421.575pt x 316.18124pt>
+File: htx3-2.jpg Graphic file (type jpg)
+ <use htx3-2.jpg>
+Package pdftex.def Info: htx3-2.jpg used on input line 301.
+(pdftex.def)             Requested size: 156.49014pt x 117.36636pt.
+
+Overfull \hbox (2.84953pt too wide) in paragraph at lines 295--308
+\T1/aer/m/n/9 To get the hes-sian be a good ap-prox-i-ma-tion, a sec-ond though
+t
+ []
+
+[3] [4 <./htx1-1.jpg> <./htx1-2.jpg> <./htx1-3.jpg> <./htx2-1.jpg> <./htx2-2.jp
+g> <./htx2-3.jpg> <./htx3-1.jpg> <./htx3-2.jpg>] (./htx.bbl) [5
+
+] (./htx.aux) ) 
+Here is how much of TeX's memory you used:
+ 3114 strings out of 493488
+ 38773 string characters out of 3144748
+ 105824 words of memory out of 3000000
+ 6328 multiletter control sequences out of 15000+200000
+ 53333 words of font info for 68 fonts, out of 3000000 for 9000
+ 957 hyphenation exceptions out of 8191
+ 41i,12n,26p,481b,436s stack positions out of 5000i,500n,10000p,200000b,50000s
+{c:/texlive/2012/texmf-dist/fonts/enc/dvips/base/8r.enc}<c:/texl
+ive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb><c:/texlive/2012/t
+exmf-dist/fonts/type1/public/amsfonts/cmextra/cmex9.pfb><c:/texlive/2012/texmf-
+dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb><c:/texlive/2012/texmf-dist/fonts
+/type1/public/amsfonts/cm/cmmi9.pfb><c:/texlive/2012/texmf-dist/fonts/type1/pub
+lic/amsfonts/cm/cmr5.pfb><c:/texlive/2012/texmf-dist/fonts/type1/public/amsfont
+s/cm/cmr6.pfb><c:/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.p
+fb><c:/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb><c:/tex
+live/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb><c:/texlive/2012/
+texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb><c:/texlive/2012/texmf-dist
+/fonts/type1/public/amsfonts/symbols/msbm10.pfb><c:/texlive/2012/texmf-dist/fon
+ts/type1/urw/helvetic/uhvb8a.pfb><c:/texlive/2012/texmf-dist/fonts/type1/urw/he
+lvetic/uhvr8a.pfb><c:/texlive/2012/texmf-dist/fonts/type1/urw/times/utmb8a.pfb>
+
+Output written on htx.pdf (5 pages, 635650 bytes).
+PDF statistics:
+ 86 PDF objects out of 1000 (max. 8388607)
+ 55 compressed objects within 1 object stream
+ 0 named destinations out of 1000 (max. 500000)
+ 46 words of extra memory for PDF output out of 10000 (max. 10000000)
+
