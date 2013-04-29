@@ -232,21 +232,74 @@ Re-estimate the parameters using the current responsibilities.
 \end{figure}
 \end{frame}
 
-\begin{frame}{Installation Instructions}
-
-These instructions assume you are using a packaged \LaTeX~distribution, like MikTex or TeXLive. If you have a custom installation, chances are you are proficient enough to interpret these instructions accordingly.
-
-\begin{enumerate}
-  \item install beamer. If you are using a \LaTeX~distribution, it's most probably already installed. Otherwise, see \cite{Beamer}
-	\item find the beamer package directory. It's typically in [texroot]/tex/latex/beamer/. Change there.
-	\item copy the file {\tt beamercolorthemecambridgeuk.sty} to ./themes/color/.
-	\item copy the file {\tt beamerthemeCambridgeUK.sty} to ./themes/theme/.
-	\item run {\tt sudo texhash}, or the equivalent on your system\footnote{Under MikTex on Windows, open Start $\to$ MikTex $\to$ Settings and run ``refresh FNDB''}
-	
-\end{enumerate}
-
+\begin{frame}
+Now we've know the inituition of the EM algorithm, and we are going to proof its property. We will need the Jensen Inequality.
+\begin{block}{Jensen's Inequality}
+If $X$ is a random variable and $\varphi$ is a convex function.
+Then $\varphi(E[X]) \leq E[\varphi(X)]$.
+\begin{figure}
+\includegraphics[width=200pt]{jensen.png}
+\end{figure}
+\end{block}
 \end{frame}
 
+\begin{frame}
+\frametitle{The General EM}
+\begin{block}{Theorem}
+In each iteration, the E-M algorithm gives a solution that gives higher likelihood.
+\end{block}
+\emph{Proof:}For simplicity, we denote all parameters as $\theta$.
+Remembering the latent variable $Z$, we can now write the log likelihood as
+\begin{equation}
+lnp(X|\theta)=ln\{\Sigma_zp(X,z|\theta)\}
+\end{equation}
+In the E-step, we are are actually forming an ancillary function(go back to \ref{m1}, \ref{m2}, \ref{m3} and check it):
+\begin{equation}
+\mathcal{Q}(\theta,\theta^{old})=\Sigma_zp(z|X,\theta^{old})lnp(X,z|\theta)
+\end{equation}
+Then, in the M-step, we are maximizing $\mathcal{Q}(\theta,\theta^{old})$, and get the $\theta^{new}$.
+\end{frame}
+
+\begin{frame}
+\frametitle{The General EM}
+Now we use Jensen's inequality to transform the log likelihood function.
+\begin{equation}{\label{anci}}
+\begin{split}
+lnp(X|\theta) &= ln\{\Sigma_z\frac{q(z)p(X,z|\theta)}{q(z)}\}\\
+&\geq \Sigma_zq(z)ln(\frac{p(X,z|\theta)}{q(z)})\\
+&=\Sigma_zq(z)ln(p(X,z|\theta))-\Sigma_zq(z)ln(q(z))
+\end{split}
+\end{equation}
+To continue we need to prove a lemma first.
+\end{frame}
+\begin{frame}
+\begin{block}{lemma}
+If $q(z)=p(z|\theta,X)$, equation \ref{anci} becomes an equality.\\
+\emph{Proof:}
+\begin{equation}
+\begin{split}
+lnp(X|\theta)- \Sigma_zq(z)ln(\frac{p(X,z|\theta)}{q(z)})\\
+=\Sigma_zq(z)\{ln(p(X|\theta))-ln(\frac{p(X,z|\theta)}{q(z)})\}\\
+=\Sigma_zq(z)\{ln(\frac{q(z)}{p(z|\theta,X)})\}\\
+=\Sigma_zq(z)ln(1)=0
+\end{split}
+\end{equation}
+\end{block}
+\end{frame}
+
+\begin{frame}
+\frametitle{The General EM}
+\framesubtitle{completing the proof}
+Now we let $q(z)=p(z|X,\theta^{old})$, then we can complete our proof.
+\begin{equation}
+\begin{split}
+ln(p(X|\theta^{new}) &\geq \Sigma_zq(z)ln(p(X,z|\theta^{new}))-\Sigma_zq(z)ln(q(z))\\
+&=\mathcal{Q}(\theta^{new}, \theta^{old})- \Sigma_zq(z)ln(q(z))\\
+&\geq \mathcal{Q}(\theta^{old}, \theta^{old})- \Sigma_zq(z)ln(q(z))\\
+&= ln(p(X|\theta^{old})
+\end{split}
+\end{equation}
+\end{frame}
 \section*{Bibliography}
 \begin{frame}%[allowframebreaks] % add this if you have more papers to cite than fit on a slide.
 \frametitle{Bibliography}
@@ -254,17 +307,6 @@ These instructions assume you are using a packaged \LaTeX~distribution, like Mik
 \begin{thebibliography}{Tantau, 2007}
 \bibitem[aaPicutre]{Beamer}
 Some pictures are from Wiki or PRML
-
-
-\bibitem[Tantau, 2007]{Beamer}
-Tantau, Till
-\newblock {\em The Beamer class}
-\newblock {\tt http://latex-beamer.sourceforge.net/}
-
-\bibitem[Cambridge 2008]{UCGuide}
-University of Cambridge
-\newblock {\em Identity Guidelines -- first edition, May 2008}
-\newblock {\tt http://www.admin.cam.ac.uk/offices/...\\ communications/services/identityguidelines/}
 
 \end{thebibliography}
 \end{frame}
