@@ -123,41 +123,113 @@ Another quantity $p(z|x)$ will also be very important. We use $\gamma (z_k)$ to 
 &= \frac{\mathcal{N}(x|\mu_k, \Sigma_k)}{\Sigma^K_{k=1}\pi_k\mathcal{N}(x|\mu_k,\Sigma_k)}
 \end{split}
 \end{equation}
+We usually say $\gamma(z_{nk})$ is the responsibility of component k for $x_n$.
 \end{frame}
 
-\subsection{Maths}
 \begin{frame}
-\frametitle{Maths}
-\framesubtitle{Including mathematical formulae into Beamer presentations is easy}
+\frametitle{Maximum likelihood}
+Suppose we have a data set of observations $\{x_1,...,x_N\}$. And we wish to model this data set using Guassian Mixture model. We could represent this data set as an N*D matrix \textbf{X}, where N is the number of data vectors and D is the dimension of the vector. Then the log likelihood function is given by
+\begin{equation}{\label{maxlike}}
+lnp(X|\pi,\mu,\Sigma)=\Sigma^N_{n=1}ln\{\Sigma^K_{k=1}\pi_k
+\mathcal{N}(x_n|\mu_k,\Sigma_k)\}
+\end{equation}
+\end{frame}
 
-Beamer's biggest strength for scientific presentations is its ability to use the full power of \LaTeX's mathematical displays.
-
+\begin{frame}
+\frametitle{E-M algorithm for Gaussian mixtures}
+The expectation-maximization algorithm is an elegant and powerful method for finding maximum likelihood solutions for models with latent variables.\\
+First, we set the derivatives of $lnp(X|\pi,\mu,\Sigma)$ in equation \ref{maxlike} with repect to $\mu_k$ to zero.
 \begin{equation}
-	\begin{aligned}
-	D_{\text{KL}}(P_0, P_\infty) &= \sum_{\gamma\delta} P_0 ^{\gamma\delta} \log P_0 ^{\gamma\delta} - \sum_{\gamma\delta} P_0 ^{\gamma\delta} \log P_\infty ^{\gamma\delta}\\
-					&= - H (P_0) - \langle \log P_\infty \rangle_0
-	\label{eq:5}
-	\end{aligned}
+\begin{split}
+0&=-\Sigma^N_{n=1}\frac{\pi_k\mathcal{N}(x_n|\mu_k,\Sigma_k)}{\Sigma^K_{j=1}\pi_j
+\mathcal{N}(x_n|\mu_j,\Sigma_j)}\Sigma_k(x_n-\mu_k)\\
+&=-\Sigma^N_{n=1}\gamma(z_{nk})\Sigma_k(x_n-\mu_k)
+\end{split}
+\end{equation}
+If we assume $\Sigma_k$ to be nonsingular, we obtain
+\begin{equation}{\label{m1}}
+\mu_k=\frac{\Sigma^{N}_{n=1}\gamma(z_{nk})x_n}{\Sigma^{N}_{n=1}\gamma(z_{nk})}
+\end{equation}
+\end{frame}
+
+\begin{frame}
+\frametitle{E-M algorithm for Gaussian mixtures}
+We set $N_k=\Sigma^{N}_{n=1}\gamma(z_{nk})$, as the effective number of points assigned to cluster k.\\
+If we set the derivative of $lnp(X|\pi,\mu,\Sigma)$ with respect to $\Sigma_k$ to zero,we get
+\begin{equation}{\label{m2}}
+\Sigma_k=\frac{1}{N_k}\gamma_k(z_{nk})(x_n-\mu_k)(x_n-\mu_k)^T
+\end{equation}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{E-M algorithm for Gaussian mixtures}
+Finally, when we maximize the log likelihood with respect to $\pi$, we need to take the constraint $\Sigma_{k=1}^K\pi_k=1$ into consideration.
+This is done by using the Lagrange multiplier.
+\end{frame}
+
+\begin{frame}
+\begin{block}{The Lagrange Multiplier}
+We want to maximize $f(x,y)$ subject $g(x,y) = c$.\\
+Let $\Lambda(x, y \lambda) = f(x,y) + \lambda (g(x,y)-c)$.Then if $(x_0, y_0)$is a maximum of the original $f$, there exists $(x_0,y_0,\lambda_0)$ is a stationary point for the $\Lambda$ function.\\
+\begin{figure}[L]
+\includegraphics[width=130pt]{Lagrange.png}
+\end{figure}
+The contour lines of f and g touch when the tangent vectors of the contour lines are parallel. Since the gradient of a function is perpendicular to the contour lines, this is the same as saying that the gradients of f and g are parallel. 
+\end{block}
+\end{frame}
+
+\begin{frame}
+\begin{block}{The Lagrange Multiplier}
+So $\nabla_{x,y}f =  - \lambda \nabla_{x,y}g$.\\
+Combining with the constraint, we get $\nabla_{x,y,\lambda}\Lambda = 0$
+\end{block}
+Now, we apply the Lagrange Multiplier to maximize with respect to $\pi$. We will be maximizing
+\begin{equation}
+lnp(x|\pi,\mu,\Sigma)+\lambda(\Sigma_{k=1}^K\pi_k-1)
+\end{equation}
+By maximizing it we will get 
+\begin{equation}{\label{m3}}
+\pi_k=\frac{N_k}{N}
+\end{equation}
+\end{frame}
+
+\begin{frame}
+\frametitle{E-M algorithm for Gaussian mixtures}
+We have to note that the solutions \ref{m1}, \ref{m2}, \ref{m3} are not closed. Because the responsibilities $\gamma(z_{nk})$ depend on the parameters. However, they suggest a iterative scheme for finding a solution to the maximum likelihood problem. 
+\end{frame}
+\begin{frame}
+\frametitle{E-M algorithm for Gaussian mixtures}
+
+\textbf{Initialize} Initialize the parameters $\mu_k$, $\Sigma_k$, and $\pi_k$\\
+\textbf{E-step} Evaluate the responsibilities using the current parameter values.
+\begin{equation}
+\begin{split}
+\gamma (z_{nk}) = \frac{\mathcal{N}(x_n|\mu_k, \Sigma_k)}{\Sigma^K_{k=1}\pi_k\mathcal{N}(x_n|\mu_k,\Sigma_k)}
+\end{split}
 \end{equation}
 
 \end{frame}
 
-\begin{frame}\frametitle{Structuring Texts}
-\framesubtitle{Lists}
+\begin{frame}
+\frametitle{E-M algorithm for Gaussian mixtures}
+\textbf{M-step} 
+Re-estimate the parameters using the current responsibilities.
+\begin{equation}
+\begin{split}
+\mu_k^{new}&=\frac{1}{N_k}{\Sigma^{N}_{n=1}\gamma(z_{nk})x_n}\\
+\Sigma_k^{new}&=\frac{1}{N_k}\gamma_k(z_{nk})(x_n-\mu_k)(x_n-\mu_k)^T\\
+\pi_k^{new}&=\frac{N_k}{N}
+\end{split}
+\end{equation}
+\textbf{Likelihood} Recalculate the log likelihood function to see if it converges, if not, go to step 1 again.
+\end{frame}
 
-\begin{columns}
-\column{.5\textwidth}
-\begin{enumerate}
-	\item Of course Beamer can do enumerated lists
-	\item It also knows how to do columns. This is helpful if you want to put figures next to text.
-\end{enumerate}
-\column{.5\textwidth}
-\begin{itemize}
-	\item bulleted lists are not numbered
-	\item Beamer can do a lot more. For overlays, figures with captions, etc., have a look at \cite{Beamer}. But don't get carried away! Simple is nearly always better.
-\end{itemize}
-
-\end{columns}
+\begin{frame}
+\frametitle{An Example}
+\begin{figure}
+\includegraphics[width=300pt]{EM-example.png}
+\end{figure}
 \end{frame}
 
 \begin{frame}{Installation Instructions}
