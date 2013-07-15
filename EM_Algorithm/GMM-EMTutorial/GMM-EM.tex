@@ -121,7 +121,7 @@ Another quantity $p(z|x)$ will also be very important. We use $\gamma (z_k)$ to 
 \begin{split}
 \gamma (z_k) = p(z_k=1|x) 
 &= \frac{p(x|z_k=1)p(z_k=1)}{p(x)} \\
-&= \frac{\mathcal{N}(x|\mu_k, \Sigma_k)}{\Sigma^K_{k=1}\pi_k\mathcal{N}(x|\mu_k,\Sigma_k)}
+&= \frac{\pi_k\mathcal{N}(x|\mu_k, \Sigma_k)}{\Sigma^K_{j=1}\pi_j\mathcal{N}(x|\mu_j,\Sigma_j)}
 \end{split}
 \end{equation}
 We usually say $\gamma(z_{nk})$ is the responsibility of component k for $x_n$.
@@ -172,7 +172,7 @@ This is done by using the Lagrange multiplier.
 \begin{frame}
 \begin{block}{The Lagrange Multiplier}
 We want to maximize $f(x,y)$ subject $g(x,y) = c$.\\
-Let $\Lambda(x, y \lambda) = f(x,y) + \lambda (g(x,y)-c)$.Then if $(x_0, y_0)$is a maximum of the original $f$, there exists $(x_0,y_0,\lambda_0)$ is a stationary point for the $\Lambda$ function.\\
+Let $\Lambda(x, y, \lambda) = f(x,y) + \lambda (g(x,y)-c)$.Then if $(x_0, y_0)$is a maximum of the original $f$, there exists $(x_0,y_0,\lambda_0)$ is a stationary point for the $\Lambda$ function.\\
 \begin{figure}[L]
 \includegraphics[width=130pt]{Lagrange.png}
 \end{figure}

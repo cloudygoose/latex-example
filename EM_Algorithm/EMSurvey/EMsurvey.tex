@@ -2,15 +2,17 @@
 %Gummi|061|=)
 \usepackage{amsmath}
 \DeclareMathOperator*{\argmax}{arg\,max}
-\title{\textbf{EM Algorithm in SR}}
+\title{\textbf{A Tour on EM Algorithm}}
 \author{Tianxing He}
 \date{}
+\usepackage{graphicx}
+\usepackage[top=1in, bottom=1in, left=1in, right=1in]{geometry}
 \begin{document}
 \bibliographystyle{plain}
 \maketitle
 
 \section{Introduction}
-Since its formal introduction in 1977 by Dempster et al. \cite{ADempsterEM}, the EM algorithm has become a standard methodology for ML estimation. The EM Algorithm is steadily becoming more and more popular and is being used in an increasing number of applications. The first publications in IEEE journals making reference to the EM algorithm appeared in 1988 and dealt with the problem of tomographic reconstruction of photon limited images \cite{1977Posit}, \cite{1988Bayes}. Since then, the EM algorithm has become a popular tool for statistical signal processing used in a wide range of applications, such as recovery and segmentation of images and video, image modelling, carrier frequency synchronization, and channel estimation in communications and speech recognition. \\
+Since its formal introduction in 1977 by Dempster et al. \cite{ADempsterEM}, the EM algorithm has become a standard methodology for ML estimation. It has steadily become more and more popular and is being used in an increasing number of applications. The first publications in IEEE journals making reference to the EM algorithm appeared in 1988 and dealt with the problem of tomographic reconstruction of photon limited images \cite{1977Posit}, \cite{1988Bayes}. Since then, the EM algorithm has become a popular tool for statistical signal processing used in a wide range of applications, such as recovery and segmentation of images and video, image modelling, carrier frequency synchronization, and channel estimation in communications and speech recognition\cite{EMExtensions}. \\
 Assume that x are the observations and $\theta$ the unknown parameters of a model that generated x. The ML estimate is obtained as 
 \begin{equation}
 \hat{\theta}_{ML}= \argmax_{\theta}L(\theta) = ln(p(x;\theta))
@@ -49,8 +51,167 @@ E-Step &: compute~p(z|x;\theta^{old})\\
 M-Step &: Evaluate~\theta^{new}=\argmax_{\theta}Q(\theta,\theta^{old})
 \end{split}
 \end{equation}
+\section{Examples}
+\subsection{Guassian Mixture Model}
+The Guassian Mixture distribution is a linear superposition of Guassians: 
+\begin{equation}
+p(x) = \Sigma^K_{k=1}\pi_k\mathcal{N}(x|\mu_k,\Sigma_k)
+\end{equation}
+Subject to:
+\begin{equation}
+\Sigma^K_{k=1}\pi_k = 1
+\end{equation}
+\begin{figure}[htp]
+\centering
+\includegraphics[scale=0.50]{GMM-example2.png}
+\caption{The Guassian Mixture Model}
+\end{figure}
 
+Given a Guassian Mixture model, we introduce K-dimensional binary random variable z which only one element $z_k$ is euqal to 1 and the others are all 0.\\
+\begin{equation}
+z=(0,0,..,1,0,..0)
+\end{equation}
+So there are K possible states for z.And we let
+\begin{equation}
+p(z_k=1) = \pi_k
+\end{equation}
+That is to say, 
+\begin{equation}
+p(z) = \prod^K_{k=1}{\pi_k}^{z_k}
+\end{equation}
+Then, we define the conditional distribution of x given a particular z:
+\begin{equation}
+p(x|z_k=1)=\mathcal{N}(x|\mu_k,\Sigma_k)
+\end{equation}
+which can also be written as:
+\begin{equation}
+p(x|z)=\prod^K_{k=1}{\mathcal{N}(x|\mu_k,\Sigma_k)}^{z_k}
+\end{equation}
+Now we can easily compute the marginal distribution of x
+\begin{displaymath}
+\begin{split}
+p(x) = \Sigma_zp(x|z)p(z) &= \Sigma_z\prod^K_{k=1}{\mathcal{N}(x|\mu_k,\Sigma_k)}^{z_k}
+\prod^K_{k=1}{\pi_k}^{z_k}\\
+ &=\Sigma^K_{k=1}\pi_k\mathcal{N}(x|\mu_k,\Sigma_k)
+\end{split}
+\end{displaymath}
+\begin{figure}[htp]
+\centering
+\includegraphics[scale=0.30]{latent-variable.png}
+\caption{$p(x)=\Sigma_z p(x,z)$}
+\label{}
+\end{figure}
+Now, instead of working with $p(x)$ we can work with $p(x,z) = p(x|z)p(z)$, which will lead to significant simplification when we are introducing the EM algorithm.\\
+If we have a sequence of observances X, now we apply the EM algorithm.
+\begin{equation}{\label{maxlike}}
+lnp(X|\pi,\mu,\Sigma)=\Sigma^N_{n=1}ln\{\Sigma^K_{k=1}\pi_k
+\mathcal{N}(x_n|\mu_k,\Sigma_k)\}
+\end{equation}
+Remembering the anxiliary function is
+\begin{equation}
+Q(\theta, \theta^{old}) = \int p(z|x; \theta^{old}) lnP(x,z;\theta)
+\end{equation}
+For GMM
+\begin{equation}
+Q(\theta, \theta^{old}) = \Sigma_Z p(Z|X, \theta^{old}) ln p(X,Z|\theta)
+\end{equation}
+Z is a vector of length N, indicating which Guassian component each observance is from.\\ For GMM, we have the constraint that $\Sigma \pi_i = 1$, using the lagrange multiplier, we should maximize
+\begin{equation}
+\Lambda = \Sigma_Z p(Z|X, \theta^{old}) ln p(X,Z|\theta) + \lambda(\Sigma_k \pi_k - 1)
+\end{equation}
+Now we set the derivative of each variable to zero:
+\begin{equation}
+\frac{\partial \Lambda}{\partial \lambda} = \Sigma_k \pi_k -1=0
+\end{equation}
+For simplicity,  we consider each $x_i$, which means, we consider $lnp(X,Z|\theta)$ as $\Sigma_i ln(p(x_i,z_i))$, unfold, and look at each $i$. Because the sequence is generated independently, the term$p(Z|X,\theta^{old})$ can be regarded as $Const * \gamma(z_{ik})$.
+\begin{equation}
+\begin{split}
+\frac{\partial \Lambda}{\partial \pi_k} &= \frac{Const* \partial ln(\pi_k)\Sigma_i\gamma(z_{ik}) + \lambda \pi_k}{\partial \pi_k}\\
+&=\frac{1}{\pi_k}\Sigma_i\gamma(z_{ik})+\lambda=0
+\end{split}
+\end{equation}
+\begin{equation}
+\begin{split}
+\frac{\partial \Lambda}{\partial \mu_k} &= \frac{Const* \Sigma_i \gamma(z_{ik}) \partial (-1/2 * (x_i-\mu_k)^T\Sigma_k^{-1}(x_i-\mu_k)) }{\partial \mu_k}\\
+&= Const * \Sigma_i \gamma(z_{ik})\frac{-1}{2}((x_i-u_k)^T\Sigma_k^{-1}+\Sigma_k^{-1}(x_i-\mu_k))\\
+&= Const * \Sigma_i \gamma(z_{ik})((x_i-\mu_k)^T\Sigma_k^{-1})=0
+\end{split}
+\end{equation}
+Note that in the second step we use a constraint that $\Sigma$ is symmetric, so is $\Sigma^{-1}$.\\
+The derivation for $\partial \Sigma$ is more complex, we need to use some conclusion from Appendix A. Now we can get the update formula for each variable by solving these equations:\\
+ \textbf{E-step} Evaluate the responsibilities using the current parameter values.
+\begin{equation}
+\begin{split}
+\gamma (z_{nk}) = \frac{\mathcal{N}(x_n|\mu_k, \Sigma_k)}{\Sigma^K_{k=1}\pi_k\mathcal{N}(x_n|\mu_k,\Sigma_k)}
+\end{split}
+\end{equation}
+\textbf{M-step} 
+Re-estimate the parameters using the current responsibilities.
+\begin{equation}
+\begin{split}
+\mu_k^{new}&=\frac{1}{N_k}{\Sigma^{N}_{n=1}\gamma(z_{nk})x_n}\\
+\Sigma_k^{new}&=\frac{1}{N_k}\gamma_k(z_{nk})(x_n-\mu_k)(x_n-\mu_k)^T\\
+\pi_k^{new}&=\frac{N_k}{N}
+\end{split}
+\end{equation}
+\textbf{Likelihood} Recalculate the log likelihood function to see if it converges, if not, go to step 1 again.
+Where
+\begin{equation}
+N_k=\Sigma_i\gamma(z_{ik})
+\end{equation}
 
+\subsection{HMM-GMM in ASR}
+\subsubsection{Introduce the HMM-GMM model}
+New machine learning algorithms can lead to significant advances in automatic speech recognition(ASR).The biggest advance occurred nearly four decades ago with the introduction of the EM algorithm for training HMMs\cite{HMM1}. Most current speech recognition systems\cite{DNN1} use hidden Markov models to deal with the temporal variability of speech and Gaussian mixture models(GMM) to determine how well each state of each HMM fits a frame or a short window of frames of coefficients that represents the acoustic input. An alternative way to evaluate the fit is to use a feed-forward neural network that takes several frames of coefficients as input and
+produces posterior porbabilities over HMM states as output. GMMs have a number of advantages that make them suitable for modeling the probability distributions over vectors of input features that are associated with each state of an HMM. With enough components, they can model probability distributions to any required level of accuracy, and they are fairly easy to fit to data using the EM algorithm. \\
+Despite all their advantages, GMMs have a serious shortcomings. They are statistically\cite{HMM2} inefficient for modeling data that lie on or near a nonlinear manifold in the data space. For example, modeling the set of points that lie very close to the surface of a sphere only requires a few parameters using an appropriate model class, but it requires a very large number of diagonal Gaussians or a fairly large number of full-covariance Gaussians. Speech is produced by modulating a relatively small number of parameters of a dynamical system, and this implies that its true underlying structure is much lower-dimensional than is immediately apparent in a window that contains hundreds of coefficients. It is believed, therefore, that other types of model may work better than GMMs for acoustic modeling if they can more effectively exploit information embedded in a large window of frames.\\
+\begin{figure}
+\centering
+\includegraphics[width=300pt]{HMM.png}
+\caption{The HMM-GMM model}
+\end{figure}
+We use a HMM to model a \emph{context dependent phone}. $a_{ij}$ is the state transition probability. $b(o)$ is a single Guassian distribution that models the observance that this state.\\
+We call $O=(o_1,o_2,...,o_T)$ the observance of a HMM, and $w = (w_1,w_2,...,w_T)$ the hidden state sequence.
+\subsubsection{Apply the EM algorithm}
+We will now assume that $b(o)$ is Guassian (instead of Guassian Mixture) for simplicity.
+As before, we unfold the anxiliary function.
+\begin{equation}
+\begin{split}
+Q_{ML}(M_{k+1};\hat{M}_{k}) = \sum_w logp(O,w|M_{k+1})p(w|O,\hat{M}_k) \\
+                            = \sum_w log(a_{w_0w_1}\prod_ta_{w_{t-1}w_t}b_{w_t}(o_t)) P(w|O, \hat{M}_k) \\
+Q_{ML}(M_{k+1};\hat{M}_{k}) = \sum_{t,j} \gamma_j(t)logb_j(o_t)+\sum_{t,i,j}\varepsilon_{ij}(t)loga_{ij}
+\end{split}                 
+\end{equation}
+Where $\gamma_j(t) = P(w_t=j|O,\hat{M}_k)$ and $\varepsilon_{ij}(t) = P(w_{t-1}=i,w_t=j|O,\hat{M}_k)$. And the transistion is simply via take each $a$ and $b$ out and add all out their cooresponding $w$.\\
+To calculate $\gamma_j$ and $\varepsilon_{ij}$, we need to calculate $\alpha_j(t) = p(o_{1-t}, w_t=j|\hat{M}_k)$ and $\beta_j(t)=p(o_{t+1-T}|w_t=j, \hat{M}_k)$
+They can be calculated efficiently:
+\begin{equation}
+\begin{split}
+\alpha_j(t) = (\sum_{i=2}^{N-1}\alpha_i(t-1)a_{ij})b_j(o_t) \\
+\beta_j(t) = \sum_{i=2}^{N-1}a_{ji}b_i(o_{t+1})\beta_i(t+1)
+\end{split}
+\end{equation}
+Then we have
+\begin{equation}
+\begin{split}
+\gamma_j(t) &= \frac{\alpha_j(t) \beta_j(t)}{p(O|\hat{M}_k)} \\ 
+\varepsilon_{ij}(t) &= \frac{\alpha_i(t-1) a_{ij} b_j(o_t) \beta_j(t)}{p(O|\hat{M}_k)}
+\end{split}
+\end{equation}
+Having got the $\gamma$ and $\varepsilon$, we finally could try to maximize 
+\begin{equation}
+Q_{ML}(M_{k+1};\hat{M}_{k}) = \sum_{t,j} \gamma_j(t)logb_j(o_t)+\sum_{t,i,j}\varepsilon_{ij}(t)loga_{ij}
+\end{equation}
+First let's consider $a_{i*}$, now we should maxmize $\sum_{t,j} \varepsilon_{ij}(t)loga_{ij}$ subject to $\sum_j a_{ij} = 1$, we could use the lagrange multiplier, I omit the derivation here.
+\begin{equation}
+\hat{a}_{ij} = \frac{\sum^{T}_{t=2}\varepsilon_{ij}(t)}{\sum^{T}_{t=1}\gamma_i(t)}
+\end{equation}
+Now we maximize the other component $\sum_{t,j} \gamma_j(t)logb_j(o_t)$.We set $G(\mu_j, \Sigma_j) = \sum_{t} \gamma_j(t)logb_j(o_t)$. And we maximize it by solving $\frac{\partial G}{\partial \mu_j}=0$. Then we get,
+\begin{equation}
+\hat{\mu_j} = \frac{\sum_t(\gamma_j(t)o_t)}{\sum_t\gamma_j(t)}
+\end{equation}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Properities of the EM algorithm}
 \subsection{Monotonous Increase of the Likelihood}
 We follow the exposition of the EM in \cite{PRML} and \cite{1998RM}. It is straightforward to show that the log-likelihood can be written as
@@ -78,9 +239,9 @@ F(q, \theta^{(p+1)}) \geq L(\theta^{(p)})
 Remembering that we always have $KL(q||p) \geq 0$, we get
 \begin{equation}
 L(\theta^{(p+1)}) \geq L(\theta^{(p)})
-\end{equation}
+\end{equation}	
 \subsection{Convergence to a Local Maxima}
-With the exception of a few specific cases, the EM algorithm is not guaranteed to converge to a global maximizer of the likehood\cite{EMTour}. Under some regularity conditions on the likelihood $L(\theta)$ and on the parameters set $\Theta$, it is possible, however, to show the parameter sequence obtained by EM converges to a local maximizer of $L(\theta)$ or at least, to a stationary point of $L(\theta)$. Necessary conditions for the convergence of the EM algorithm and related theorems can be found in \cite{EMCov}.
+With the exception of a few specific cases, the EM algorithm is not guaranteed to converge to a global maximizer of the likehood\cite{EMTour, Xu95onconvergence}. Under some regularity conditions on the likelihood $L(\theta)$ and on the parameters set $\Theta$, it is possible, however, to show the parameter sequence obtained by EM converges to a local maximizer of $L(\theta)$ or at least, to a stationary point of $L(\theta)$. Necessary conditions for the convergence of the EM algorithm and related theorems can be found in \cite{EMCov}.
 \section{Variants of the EM Algorithm}
 \subsection{Penalized Likelihood Estimation}
 The EM algorithm can be straightforwardly modified to compute penalized likelihood estimates, that is, estimates of the form
@@ -120,9 +281,31 @@ From that assumption we could deride \cite{LifeAfter}
 q_j^*(z_j)=\frac{exp(<lnp(x,z;\theta)>_{i\neq j})}{\int exp(<lnp(x,z;\theta)>_{i\neq j})dz_j}
 \end{equation}
 
+\section{Appendix}
+\subsection{A:The derivative of the Guassian likelihood with respect to covariance matrix}
+First we list some math tools we will use:
+\begin{equation}
+\frac{\partial}{\partial A}ln|A|=(A^{-1})^T 
+\end{equation}
+\begin{equation}
+\frac{\partial[X^{-1}A]}{\partial X}=-X^{-1}A^TX^{-1}
+\end{equation}
 
-
-
+We have the Guassian likelihood:
+\begin{equation}
+ln(\mathcal{N}(x|\mu, \Sigma))=-\frac{D}{2}ln(2\pi) + (-\frac{1}{2})ln(|\Sigma|) + (-\frac{1}{2})(x-\mu)^T\Sigma^{-1}(x-\mu)
+\end{equation}
+Now we differentiate it with respect to $\Sigma$, we get
+\begin{equation}
+\begin{split}
+\frac{\partial ln(\mathcal{N}(x|\mu, \Sigma))}{\partial \Sigma}&= {\Sigma}^{-1} + \frac{\partial Tr[\Sigma^{-1}(x-\mu)(x-\mu)^T]}{\partial \Sigma} \\
+&= {\Sigma}^{-1} -\Sigma^{-1}(x-\mu)(x-\mu)^T\Sigma^{-1}
+\end{split}
+\end{equation}
+By setting the derivative to zero, we get 
+\begin{equation}
+\Sigma=(x-\mu)(x-\mu)^T
+\end{equation}
 
 \bibliography{ref}
 
