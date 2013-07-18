@@ -63,7 +63,7 @@ Wnumber & config(input$->$output) & feature & WER & CER & comment\\
 \hline
  & 1024-1024-512-512-512 & mfcc & 42.41 & 36.06 & ridiculous!\\
 \hline
-& 1224-1224-1224-1024-930 & mfcc & 43.10 & 36.42 & improved a little\\
+7658754 & 1224-1224-1224-1024-930 & mfcc & 43.10 & 36.42 & improved a little\\
 \hline
 & 512-512-512-512-512 & mfcc & 44.68 & 38.47 & \\
 \hline
